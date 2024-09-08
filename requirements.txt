@@ -1,0 +1,5 @@
+pandas
+plotly
+streamlit
+speedtest-cli
+python-dateutil
