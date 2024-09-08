@@ -33,7 +33,7 @@ class ConnectionLogger(threading.Thread):
         """
         logging.info("Conducting speed test.")
         sys_time = datetime.now().replace(microsecond=0)
-        s = speedtest.Speedtest()
+        s = speedtest.Speedtest(secure=True)
         s.get_servers()
         s.get_best_server()
         s.download()
