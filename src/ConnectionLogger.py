@@ -1,6 +1,7 @@
 import speedtest
 import time
 import csv
+import os
 import threading
 from typing import Tuple, List
 from datetime import datetime
@@ -46,6 +47,9 @@ class ConnectionLogger(threading.Thread):
         """Log the speed test results to a CSV file in the desired schema."""     
         # Define the row data according to the schema
         row = self.unnest_results(result)
+
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(self.outpath), exist_ok=True)
 
         with open(self.outpath, mode="a", newline="") as speedcsv:
             csv_writer = csv.DictWriter(speedcsv, fieldnames=row.keys())
